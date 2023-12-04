@@ -1,0 +1,18 @@
+version: "2.1"
+
+services:
+
+  micro-ros-serial-agent:
+    image: microros/micro-ros-agent:humble
+    container_name: micro-ros-serial-agent
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
+    environment:
+      - ROS_DOMAIN_ID=8
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev:/dev
+      - /dev/shm:/dev/shm
+    command: serial --dev /dev/ttyUSB0 --verbose 6

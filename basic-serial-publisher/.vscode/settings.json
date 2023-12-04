@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": true,
+    "cmake.configureOnOpen": false,
+    "ros.distro": "humble",
+    "files.associations": {
+        "system_error": "cpp"
+    },
+}

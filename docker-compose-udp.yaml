@@ -1,0 +1,15 @@
+version: "2.1"
+
+services:
+
+  micro-ros-udp-agent:
+    image: microros/micro-ros-agent:humble
+    container_name: micro-ros-udp-agent
+    network_mode: host
+    stdin_open: true
+    tty: true
+    environment:
+      - ROS_DOMAIN_ID=8
+    ports:
+      - 8888:8888/udp
+    command: udp4 --port 8888 --verbose 6

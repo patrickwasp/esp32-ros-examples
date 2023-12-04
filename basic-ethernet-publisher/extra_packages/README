@@ -1,0 +1,16 @@
+
+This directory is intended for project specific colcon packages. 
+PlatformIO will add them to the build process.
+
+You can copy them the packages directky, create symbolic links to them from the src directory, 
+or create a extra_packages.repos yaml file to clone them from a git repository.
+
+After adding new packages, you will need to force a clean recompile.
+
+in a PIO terminal run the following commands
+
+```bash
+pio run --target clean_microros
+pio lib install
+pio run
+````
