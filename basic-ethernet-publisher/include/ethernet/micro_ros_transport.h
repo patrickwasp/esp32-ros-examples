@@ -21,7 +21,7 @@ static inline void set_microros_ethernet_transports(IPAddress client_ip,
                                                     uint16_t agent_port) {
   static struct micro_ros_agent_locator locator;
 
-  // WiFi.onEvent(EthernetEventCallback);
+  WiFi.onEvent(EthernetEventCallback);
   ETH.begin();
   ETH.config(client_ip, IPAddress(0, 0, 0, 0), netmask);
   delay(1000);
