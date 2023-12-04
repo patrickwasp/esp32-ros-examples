@@ -4,6 +4,8 @@
 #include <Arduino.h>
 #include <inttypes.h>
 
+#define SERIAL_DEBUG
+
 constexpr int8_t kDomainId = 8;
 constexpr char kNodeName[] = "example_micro_ros_node";
 constexpr char kNamespace[] = "example_namespace";
