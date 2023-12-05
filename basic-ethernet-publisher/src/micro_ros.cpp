@@ -20,11 +20,7 @@ rcl_publisher_t g_example_publisher;
 // messages
 std_msgs__msg__Int32 g_example_int_message;
 
-void HandleReturnCodeError(rcl_ret_t error_code) {
-  Serial.print("ROS error: ");
-  Serial.println(error_code);
-  esp_restart();
-}
+void HandleReturnCodeError(rcl_ret_t error_code) { esp_restart(); }
 
 struct timespec GetTime() {
   struct timespec time;
@@ -129,12 +125,14 @@ void ManageAgentLifecycle() {
   // auto reconnect to agent
   switch (g_agent_state) {
     case AgentStates::kWaitingForConnection:
+      Serial.println("Waiting for connection");
       EXECUTE_EVERY_N_MS(
           500, g_agent_state = (RMW_RET_OK == rmw_uros_ping_agent(100, 1))
                                    ? AgentStates::kAvailable
                                    : AgentStates::kWaitingForConnection;);
       break;
     case AgentStates::kAvailable:
+      Serial.println("Available");
       g_agent_state = (true == CreateEntities())
                           ? AgentStates::kConnected
                           : AgentStates::kWaitingForConnection;
@@ -143,6 +141,7 @@ void ManageAgentLifecycle() {
       };
       break;
     case AgentStates::kConnected:
+      Serial.println("Connected");
       EXECUTE_EVERY_N_MS(
           200, g_agent_state = (RMW_RET_OK == rmw_uros_ping_agent(100, 1))
                                    ? AgentStates::kConnected
@@ -152,6 +151,7 @@ void ManageAgentLifecycle() {
       }
       break;
     case AgentStates::kDisconnected:
+      Serial.println("Disconnected");
       DestroyEntities();
       g_agent_state = AgentStates::kWaitingForConnection;
       break;
