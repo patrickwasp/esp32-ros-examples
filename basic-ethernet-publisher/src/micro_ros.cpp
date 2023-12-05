@@ -143,7 +143,7 @@ void ManageAgentLifecycle() {
     case AgentStates::kConnected:
       Serial.println("Connected");
       EXECUTE_EVERY_N_MS(
-          200, g_agent_state = (RMW_RET_OK == rmw_uros_ping_agent(100, 1))
+          200, g_agent_state = (RMW_RET_OK == rmw_uros_ping_agent(200, 3))
                                    ? AgentStates::kConnected
                                    : AgentStates::kDisconnected;);
       if (g_agent_state == AgentStates::kConnected) {
