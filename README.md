@@ -1,6 +1,6 @@
 # esp32-ros-examples
 
-These are some examples of using micro-ROS on ESP32 boards, specifically the Olimex ESP32-POE-ISO board.
+These are some examples of using micro-ROS on ESP32 boards, specifically the [Olimex ESP32-POE-ISO](https://www.olimex.com/Products/IoT/ESP32/ESP32-POE-ISO/open-source-hardware) board.
 
 ### Prerequisites
 - VSCode with PlatformIO
